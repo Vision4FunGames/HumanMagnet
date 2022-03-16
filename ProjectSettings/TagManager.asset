@@ -4,12 +4,17 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Obstacle
+  - Floor
+  - LeftLeg
+  - RightLeg
+  - LeftHand
+  - RightHand
   - Head
-  - FootLeft
-  - FootRight
-  - HandRight
-  - HandLeft
-  - Mid
+  - Hip
+  - Body
+  - Bonus
+  - Ammo
   layers:
   - Default
   - TransparentFX
@@ -17,7 +22,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Floor
   - 
   - 
   - 
