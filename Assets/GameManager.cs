@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     public GameObject settingsPanel;
     public GameObject mainMenuP;
     public GameObject levelCompSpline;
+    public GameObject DolarSc;
+    public GameObject coinObj;
 
     //GAMELevelPlayerPrebs
 

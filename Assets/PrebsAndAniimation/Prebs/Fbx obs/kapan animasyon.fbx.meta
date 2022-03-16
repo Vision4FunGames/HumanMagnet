@@ -1,0 +1,186 @@
+fileFormatVersion: 2
+guid: ca15fdd9b436cbb42b6e9affde38cff2
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: -1498010087492872569
+    second: CINEMA_4D_Main
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'Hips' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: kapan animasyon(Clone)
+      parentName: 
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCube2
+      parentName: kapan animasyon(Clone)
+      position: {x: 0.000015258789, y: 14.253934, z: -0.000045776367}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCone9
+      parentName: kapan animasyon(Clone)
+      position: {x: 0.0008289983, y: 127.89653, z: -77.70637}
+      rotation: {x: 0.49439147, y: -0, z: -0, w: 0.8692394}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCone9_7
+      parentName: kapan animasyon(Clone)
+      position: {x: 60.87572, y: 248.08255, z: -94.66454}
+      rotation: {x: 0.49439147, y: -0, z: -0, w: 0.8692394}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCone9_6
+      parentName: kapan animasyon(Clone)
+      position: {x: 5.762258, y: 248.08253, z: -94.664536}
+      rotation: {x: 0.49439147, y: -0, z: -0, w: 0.8692394}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCone9_5
+      parentName: kapan animasyon(Clone)
+      position: {x: -49.3512, y: 248.0825, z: -94.66451}
+      rotation: {x: 0.49439147, y: -0, z: -0, w: 0.8692394}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCone9_4
+      parentName: kapan animasyon(Clone)
+      position: {x: 60.875694, y: 194.43024, z: -62.75651}
+      rotation: {x: 0.49439147, y: -0, z: -0, w: 0.8692394}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCone9_3
+      parentName: kapan animasyon(Clone)
+      position: {x: 5.7622333, y: 194.4302, z: -62.756496}
+      rotation: {x: 0.49439147, y: -0, z: -0, w: 0.8692394}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCone9_2
+      parentName: kapan animasyon(Clone)
+      position: {x: -49.351227, y: 194.43018, z: -62.75648}
+      rotation: {x: 0.49439147, y: -0, z: -0, w: 0.8692394}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCone8
+      parentName: kapan animasyon(Clone)
+      position: {x: 0.00086714525, y: 127.89115, z: 77.70302}
+      rotation: {x: -0.49439147, y: 0, z: -0, w: 0.8692394}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCone8_7
+      parentName: kapan animasyon(Clone)
+      position: {x: -4.205706, y: 221.24576, z: 78.70406}
+      rotation: {x: -0.49439147, y: 0, z: -0, w: 0.8692394}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCone8_6
+      parentName: kapan animasyon(Clone)
+      position: {x: -4.205706, y: 221.24576, z: 78.70406}
+      rotation: {x: -0.49439147, y: 0, z: -0, w: 0.8692394}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCone8_5
+      parentName: kapan animasyon(Clone)
+      position: {x: -4.205706, y: 221.24576, z: 78.70406}
+      rotation: {x: -0.49439147, y: 0, z: -0, w: 0.8692394}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCone8_4
+      parentName: kapan animasyon(Clone)
+      position: {x: -4.205706, y: 221.24576, z: 78.70406}
+      rotation: {x: -0.49439147, y: 0, z: -0, w: 0.8692394}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCone8_3
+      parentName: kapan animasyon(Clone)
+      position: {x: -4.205706, y: 221.24576, z: 78.70406}
+      rotation: {x: -0.49439147, y: 0, z: -0, w: 0.8692394}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCone8_2
+      parentName: kapan animasyon(Clone)
+      position: {x: -4.205706, y: 221.24576, z: 78.70406}
+      rotation: {x: -0.49439147, y: 0, z: -0, w: 0.8692394}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

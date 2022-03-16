@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+
+using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
 public enum PlayerState
@@ -43,6 +45,8 @@ public class PlayerScript : MonoBehaviour
     public bool hipB = true;
     public bool playerGun = true;
     public PlayerState playerState = PlayerState.None;
+    public bool ammoBool = false;
+    public float timer;
 
     private void Start()
     {
@@ -101,27 +105,37 @@ public class PlayerScript : MonoBehaviour
 
     public void FixedUpdate()
     {
-        var pos = transform.position;
-        pos.x = Mathf.Clamp(transform.position.x, -0.4f, 0.4f);
-        transform.position = pos;
-
-        Vector3 direction = Vector3.forward * _DynamicJoystick.Vertical + Vector3.right * _DynamicJoystick.Horizontal;
-
-        rb.velocity = (direction * speed) * Time.fixedDeltaTime * speed;
-        if (_DynamicJoystick.Horizontal > 0)
+        if (GameManager.Instance.isPlay)
         {
-            transform.DORotate(new Vector3(0, 30, 0), 1f);
-        }
-        else if (_DynamicJoystick.Horizontal == 0)
-        {
-            transform.DORotate(new Vector3(0, 0, 0), 1f);
-        }
-        else
-        {
-            transform.DORotate(new Vector3(0, -30, 0), 1f);
-        }
 
-        PlayerMoves();
+            timer += Time.fixedDeltaTime;
+            if (timer > 0.5f)
+            {
+                ammoBool = true;
+            }
+            var pos = transform.position;
+            pos.x = Mathf.Clamp(transform.position.x, -0.4f, 0.4f);
+            transform.position = pos;
+
+            Vector3 direction = Vector3.forward * _DynamicJoystick.Vertical + Vector3.right * _DynamicJoystick.Horizontal;
+
+            rb.velocity = (direction * speed) * Time.fixedDeltaTime * speed;
+            if (_DynamicJoystick.Horizontal > 0)
+            {
+                transform.DORotate(new Vector3(0, 30, 0), 1f);
+            }
+            else if (_DynamicJoystick.Horizontal == 0)
+            {
+                transform.DORotate(new Vector3(0, 0, 0), 1f);
+            }
+            else
+            {
+                transform.DORotate(new Vector3(0, -30, 0), 1f);
+            }
+
+            PlayerMoves();
+
+        }
     }
 
     public void PlayerMoves()
@@ -177,67 +191,19 @@ public class PlayerScript : MonoBehaviour
     {
         if (other.CompareTag("Bonus"))
         {
-            // if (leftLegB)
-            // {
-            //     playerState = PlayerState.leftLeg;
-            //     GameManager.Instance.SwichCase();
-            // }
-            //
-            // if (rightLegB)
-            // {
-            //     playerState = PlayerState.rightLeg;
-            //     GameManager.Instance.SwichCase();
-            // }
-            //
-            // if (rightLegB && leftLegB)
-            // {
-            //     Debug.Log("TWOLEG");
-            //     playerState = PlayerState.None;
-            //     GameManager.Instance.SwichCase();
-            // }
-            //
-            // if (bodyB)
-            // {
-            //     playerState = PlayerState.bodys;
-            //     GameManager.Instance.SwichCase();
-            // }
-            //
-            // if (leftHandB)
-            // {
-            //     playerState = PlayerState.leftHand;
-            //     GameManager.Instance.SwichCase();
-            // }
-            //
-            // if (rightHandB)
-            // {
-            //     playerState = PlayerState.rightHand;
-            //     GameManager.Instance.SwichCase();
-            // }
-            //
-            // if (playerState == PlayerState.None)
-            // {
-            //     StartCoroutine(timers());
-            //     GameManager.Instance.SwichCase();
-            // }
-            //
-            // if (playerState == PlayerState.bodys)
-            // {
-            //     GameManager.Instance.SwichCase();
-            // }
-            //
-            // else if (!headB && !leftHandB && !rightHandB)
-            // {
-            //     GameManager.Instance.rightHand.SetActive(true);
-            //     GameManager.Instance.leftHand.SetActive(true);
-            //     GameManager.Instance.head.SetActive(true);
-            // }
-            if (! headB && !leftHandB && !rightHandB && !leftLegB && !rightLegB && !hipB && !bodyB)
+
+            if (!headB && !leftHandB && !rightHandB && !leftLegB && !rightLegB && !hipB && !bodyB)
             {
-                StartCoroutine(timers());
+                if (ammoBool)
+                {
+                    StartCoroutine(timers());
+                    ammoBool = false;
+                    timer = 0;
+                }
             }
             else if (headB || leftHandB || rightHandB || leftLegB || rightLegB || hipB || bodyB)
             {
-               
+
                 GameManager.Instance.rightHand.SetActive(true);
                 GameManager.Instance.leftHand.SetActive(true);
                 GameManager.Instance.head.SetActive(true);
@@ -248,6 +214,13 @@ public class PlayerScript : MonoBehaviour
                 playerState = PlayerState.None;
             }
         }
+        if (other.CompareTag("Coin"))
+        {
+            // GameManager.Instance.DolarSc.GetComponent<DolarsScripts>().SpawnDolars();
+            GameManager.Instance.coinObj.GetComponent<CoinScript>().StartCoroutine((GameManager.Instance.coinObj.GetComponent<CoinScript>().CoinPlus()));
+           
+            Debug.Log("asd");
+        }
     }
 
     public void AttackBonus()
@@ -256,17 +229,22 @@ public class PlayerScript : MonoBehaviour
 
     public IEnumerator timers()
     {
+        //  StartCoroutine(AmmoStart());
+
+        Vector3 ammoPos = new Vector3(GameManager.Instance.characterGun.transform.position.x, GameManager.Instance.characterGun.transform.position.y, GameManager.Instance.characterGun.transform.position.z + .3f);
+        Instantiate(GameManager.Instance.RandomAmmo, ammoPos, Quaternion.identity);
         GameManager.Instance.characterGun.SetActive(true);
         playerState = PlayerState.characterGun;
         yield return new WaitForSeconds(3f);
+        Instantiate(GameManager.Instance.RandomAmmo, ammoPos, Quaternion.identity);
         GameManager.Instance.characterGun.SetActive(false);
         playerState = PlayerState.None;
     }
 
-    public IEnumerator AmmoStart()
-    {
-        Instantiate(GameManager.Instance.ammoGo, GameManager.Instance.characterGun.transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(1f);
-        
-    }
+
+    /*  public IEnumerator AmmoStart()
+      {
+          yield return new WaitForSeconds(10f);
+
+      }*/
 }

@@ -15,6 +15,7 @@ TagManager:
   - Body
   - Bonus
   - Ammo
+  - Coin
   layers:
   - Default
   - TransparentFX
