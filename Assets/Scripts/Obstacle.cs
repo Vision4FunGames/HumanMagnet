@@ -9,6 +9,9 @@ public class Obstacle : MonoBehaviour
 {
     public Rigidbody[] rbs;
     public float destrucStrengthMultiplier;
+    public Animator myAnim;
+    
+    //obstacles trigger engel olaylarının hepsi burada ayarlanıyor  ne açılacak ne kapanacak buradan incelenip düzenlenebilir 
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("LeftLeg"))
@@ -81,10 +84,7 @@ public class Obstacle : MonoBehaviour
             GameManager.Instance.PlayerScript.Test1();
         }
 
-        if (other.CompareTag("Ammo"))
-        {
-            DestrucFirst();
-        }
+        
     }
     
 

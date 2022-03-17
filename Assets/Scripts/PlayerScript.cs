@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-
 using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
+//karakter şekil belirleyici
 public enum PlayerState
 {
     None = 0,
@@ -53,6 +53,7 @@ public class PlayerScript : MonoBehaviour
         Animator();
     }
 
+//stateleregöre ne olacağı belirlenen yer
     public void Test1()
     {
         if (rightLegB && leftLegB)
@@ -105,19 +106,21 @@ public class PlayerScript : MonoBehaviour
 
     public void FixedUpdate()
     {
+        //başlangıç ve karakter move
         if (GameManager.Instance.isPlay)
         {
-
             timer += Time.fixedDeltaTime;
             if (timer > 0.5f)
             {
                 ammoBool = true;
             }
+
             var pos = transform.position;
             pos.x = Mathf.Clamp(transform.position.x, -0.4f, 0.4f);
             transform.position = pos;
 
-            Vector3 direction = Vector3.forward * _DynamicJoystick.Vertical + Vector3.right * _DynamicJoystick.Horizontal;
+            Vector3 direction = Vector3.forward * _DynamicJoystick.Vertical +
+                                Vector3.right * _DynamicJoystick.Horizontal;
 
             rb.velocity = (direction * speed) * Time.fixedDeltaTime * speed;
             if (_DynamicJoystick.Horizontal > 0)
@@ -134,7 +137,6 @@ public class PlayerScript : MonoBehaviour
             }
 
             PlayerMoves();
-
         }
     }
 
@@ -150,48 +152,11 @@ public class PlayerScript : MonoBehaviour
     }
 
 
-    // public void TouchController()
-    // {
-    //     if (Input.GetMouseButton(0))
-    //     {
-    //         delta = (Input.mousePosition - initialMousePosition) * ((float) Screen.width / Screen.height) *
-    //                 inputSensitivity * Time.deltaTime;
-    //
-    //         initialMousePosition = Input.mousePosition;
-    //     }
-    //
-    //     if (Input.GetMouseButtonDown(0))
-    //     {
-    //         delta = Vector3.zero;
-    //         initialMousePosition = Input.mousePosition;
-    //     }
-    //
-    //     if (Input.GetMouseButtonUp(0))
-    //     {
-    //         initialMousePosition = Input.mousePosition;
-    //         delta = Vector3.zero;
-    //     }
-    // }
-    // public void DestrucFirst()
-    // {
-    //     foreach (Rigidbody rigid in rbs)
-    //     {
-    //         rigid.isKinematic = false;
-    //         rigid.useGravity = true;
-    //         rigid.AddForce(new Vector3(
-    //             rigid.transform.localPosition.x +
-    //             Random.Range(destrucStrengthMultiplier, destrucStrengthMultiplier * 3) * 3,
-    //             Random.Range(destrucStrengthMultiplier, destrucStrengthMultiplier * 3),
-    //             Random.Range(-destrucStrengthMultiplier, destrucStrengthMultiplier)));
-    //         Destroy(rigid.gameObject, 2f);
-    //     }
-    // }
-
     public void OnTriggerEnter(Collider other)
     {
+        //karakter bonus ayarları ve coin ayarları bu trigger içerisinde 
         if (other.CompareTag("Bonus"))
         {
-
             if (!headB && !leftHandB && !rightHandB && !leftLegB && !rightLegB && !hipB && !bodyB)
             {
                 if (ammoBool)
@@ -203,7 +168,6 @@ public class PlayerScript : MonoBehaviour
             }
             else if (headB || leftHandB || rightHandB || leftLegB || rightLegB || hipB || bodyB)
             {
-
                 GameManager.Instance.rightHand.SetActive(true);
                 GameManager.Instance.leftHand.SetActive(true);
                 GameManager.Instance.head.SetActive(true);
@@ -214,11 +178,13 @@ public class PlayerScript : MonoBehaviour
                 playerState = PlayerState.None;
             }
         }
+
         if (other.CompareTag("Coin"))
         {
             // GameManager.Instance.DolarSc.GetComponent<DolarsScripts>().SpawnDolars();
-            GameManager.Instance.coinObj.GetComponent<CoinScript>().StartCoroutine((GameManager.Instance.coinObj.GetComponent<CoinScript>().CoinPlus()));
-           
+            GameManager.Instance.coinObj.GetComponent<CoinScript>()
+                .StartCoroutine((GameManager.Instance.coinObj.GetComponent<CoinScript>().CoinPlus()));
+
             Debug.Log("asd");
         }
     }
@@ -231,7 +197,9 @@ public class PlayerScript : MonoBehaviour
     {
         //  StartCoroutine(AmmoStart());
 
-        Vector3 ammoPos = new Vector3(GameManager.Instance.characterGun.transform.position.x, GameManager.Instance.characterGun.transform.position.y, GameManager.Instance.characterGun.transform.position.z + .3f);
+        Vector3 ammoPos = new Vector3(GameManager.Instance.characterGun.transform.position.x,
+            GameManager.Instance.characterGun.transform.position.y,
+            GameManager.Instance.characterGun.transform.position.z + .3f);
         Instantiate(GameManager.Instance.RandomAmmo, ammoPos, Quaternion.identity);
         GameManager.Instance.characterGun.SetActive(true);
         playerState = PlayerState.characterGun;

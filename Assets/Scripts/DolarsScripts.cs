@@ -13,6 +13,7 @@ public class DolarsScripts : MonoBehaviour, IPointerDownHandler
     public Dolar dolar;
     public int dolarSpawmCount;
 
+   //uı coin ayarları
     // Update is called once per frame
     public void SpawnDolars(PointerEventData data)
     {

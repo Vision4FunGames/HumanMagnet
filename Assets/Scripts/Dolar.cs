@@ -6,7 +6,7 @@ using UnityEngine;
 public class Dolar : MonoBehaviour
 {
     public Transform moveTransform;
-
+//UIdaki coin ayarları
     public void DolarAnimation(float delay,float scaleDuration,float moveDuration)
     {
         transform.DOScale(new Vector3(1, 1, 1), scaleDuration).SetEase(Ease.Linear).OnComplete(() =>
