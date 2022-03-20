@@ -51,15 +51,24 @@ public class GameManager : MonoBehaviour
     public void SwichCase()
     {
         switch (PlayerScript.playerState)
-        {
+        { 
+            
+            //switch case mantığı şöyle çalışıyor istediğimiz case i çağırıp atıyorum none onun içerisindeki break a kadar olan kodları çekmemize yarıyor bunuda playerstate=PlayerState.None ile çağırıp
+            //Switch e sokmak içinGM.Instance.SwichCase(); yapılıp çalıştırılıyor PlayerScript ve Obstacle ın içinde çok sayıda kodlama görünmesini istemediğimiz için
+            //böyle çalışılması gereken bir proje olduğunu düşünüyorum.
             case PlayerState.None:
                 Debug.Log("None");
+                _anim.CrossFade("metarig|running", 0.5f);
                 PlayerScript.rightLegB = false;
                 PlayerScript.leftLegB = false;
+                PlayerScript.leftHandB = false;
+                PlayerScript.rightHandB = false;
+                PlayerScript.bodyB = false;
+                PlayerScript.hipB = false;
                 rightLeg.SetActive(true);
                 leftLeg.SetActive(true);
                 body.SetActive(true);
-                _anim.CrossFade("metarig|running", 0.5f);
+                hip.SetActive(true);
                 break;
             case PlayerState.leftHand:
                 Debug.Log("solkol");
@@ -79,6 +88,7 @@ public class GameManager : MonoBehaviour
                 leftHand.SetActive(false);
                 rightHand.SetActive(false);
                 head.SetActive(false);
+                //UI ile birlikte yapılacak 
                 Debug.Log("ortakısım");
                 break;
             case PlayerState.twoLeg:

@@ -18,6 +18,7 @@ public class Obstacle : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             GameManager.Instance.PlayerScript.leftLegB = true;
+            GameManager.Instance.PlayerScript.ammoBool = false;
             var transPos = other.transform.position;
             Instantiate(GameManager.Instance.PlayerScript.leftLeg, new Vector3(transPos.x, transPos.y, transPos.z),
                 Quaternion.identity);
@@ -28,6 +29,7 @@ public class Obstacle : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             GameManager.Instance.PlayerScript.rightLegB = true;
+            GameManager.Instance.PlayerScript.ammoBool = false;
             var transPos = other.transform.position;
             Instantiate(GameManager.Instance.PlayerScript.rightLeg, new Vector3(transPos.x, transPos.y, transPos.z),
                 Quaternion.identity);
@@ -36,8 +38,10 @@ public class Obstacle : MonoBehaviour
 
         if (other.CompareTag("Body"))
         {
+            //hard died olacak
             other.gameObject.SetActive(false);
             GameManager.Instance.PlayerScript.bodyB = true;
+            GameManager.Instance.PlayerScript.ammoBool = false;
             var transPos = other.transform.position;
             Instantiate(GameManager.Instance.PlayerScript.body, new Vector3(transPos.x, transPos.y, transPos.z),
                 Quaternion.identity);
@@ -48,6 +52,7 @@ public class Obstacle : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             GameManager.Instance.PlayerScript.leftHandB = true;
+            GameManager.Instance.PlayerScript.ammoBool = false;
             var transPos = other.transform.position;
             Instantiate(GameManager.Instance.PlayerScript.leftHand, new Vector3(transPos.x, transPos.y, transPos.z),
                 Quaternion.identity);
@@ -58,6 +63,7 @@ public class Obstacle : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             GameManager.Instance.PlayerScript.rightHandB = true;
+            GameManager.Instance.PlayerScript.ammoBool = false;
             var transPos = other.transform.position;
             Instantiate(GameManager.Instance.PlayerScript.rightHand, new Vector3(transPos.x, transPos.y, transPos.z),
                 Quaternion.identity);
@@ -68,6 +74,7 @@ public class Obstacle : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             GameManager.Instance.PlayerScript.hipB = true;
+            GameManager.Instance.PlayerScript.ammoBool = false;
             var transPos = other.transform.position;
             Instantiate(GameManager.Instance.PlayerScript.hip, new Vector3(transPos.x, transPos.y, transPos.z),
                 Quaternion.identity);
@@ -78,6 +85,7 @@ public class Obstacle : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             GameManager.Instance.PlayerScript.headB = true;
+            GameManager.Instance.PlayerScript.ammoBool = false;
             var transPos = other.transform.position;
             Instantiate(GameManager.Instance.PlayerScript.head, new Vector3(transPos.x, transPos.y, transPos.z),
                 Quaternion.identity);

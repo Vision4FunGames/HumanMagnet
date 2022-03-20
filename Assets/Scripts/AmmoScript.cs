@@ -26,7 +26,7 @@ public class AmmoScript : MonoBehaviour
                 rigid.transform.localPosition.x +
                 Random.Range(destrucStrengthMultiplier, destrucStrengthMultiplier * 3) * 3,
                 Random.Range(destrucStrengthMultiplier, destrucStrengthMultiplier * 3),
-                rigid.transform.position.z+5000f));
+                rigid.transform.position.z+2500f));
             //Destroy(rigid.gameObject, 0.5f);
         }
     }

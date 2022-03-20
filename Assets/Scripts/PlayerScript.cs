@@ -86,6 +86,11 @@ public class PlayerScript : MonoBehaviour
             playerState = PlayerState.characterGun;
             GameManager.Instance.SwichCase();
         }
+        else if (!rightLegB&&!leftLegB)
+        {
+            playerState = PlayerState.None;
+            GameManager.Instance.SwichCase();
+        }
     }
 
     // public void test(Collider other, GameObject bodyGameObject)
@@ -110,7 +115,7 @@ public class PlayerScript : MonoBehaviour
         if (GameManager.Instance.isPlay)
         {
             timer += Time.fixedDeltaTime;
-            if (timer > 0.5f)
+            if (timer > 3f)
             {
                 ammoBool = true;
             }
@@ -161,6 +166,7 @@ public class PlayerScript : MonoBehaviour
             {
                 if (ammoBool)
                 {
+                    Debug.Log("AMMO GELDİİİ VAR");
                     StartCoroutine(timers());
                     ammoBool = false;
                     timer = 0;
@@ -168,14 +174,8 @@ public class PlayerScript : MonoBehaviour
             }
             else if (headB || leftHandB || rightHandB || leftLegB || rightLegB || hipB || bodyB)
             {
-                GameManager.Instance.rightHand.SetActive(true);
-                GameManager.Instance.leftHand.SetActive(true);
-                GameManager.Instance.head.SetActive(true);
-                GameManager.Instance.rightLeg.SetActive(true);
-                GameManager.Instance.leftLeg.SetActive(true);
-                GameManager.Instance.head.SetActive(true);
-                GameManager.Instance.body.SetActive((true));
                 playerState = PlayerState.None;
+                GameManager.Instance.SwichCase();
             }
         }
 
@@ -207,6 +207,7 @@ public class PlayerScript : MonoBehaviour
         Instantiate(GameManager.Instance.RandomAmmo, ammoPos, Quaternion.identity);
         GameManager.Instance.characterGun.SetActive(false);
         playerState = PlayerState.None;
+        GameManager.Instance.SwichCase();
     }
 
 
