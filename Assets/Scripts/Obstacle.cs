@@ -46,6 +46,12 @@ public class Obstacle : MonoBehaviour
             Instantiate(GameManager.Instance.PlayerScript.body, new Vector3(transPos.x, transPos.y, transPos.z),
                 Quaternion.identity);
             GameManager.Instance.PlayerScript.Test1();
+            //Die
+            GameManager.Instance.PlayerScript.GetComponent<Rigidbody>().isKinematic = true;
+            GameManager.Instance._anim.enabled = false;
+            //UI ile birlikte yapılacak 
+            GameManager.Instance.isPlay = false;
+            GameManager.Instance.diedPanel.SetActive(true);
         }
 
         if (other.CompareTag("LeftHand"))

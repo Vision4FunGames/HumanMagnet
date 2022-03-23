@@ -187,6 +187,11 @@ public class PlayerScript : MonoBehaviour
 
             Debug.Log("asd");
         }
+
+        if (other.CompareTag("Finish"))
+        {
+            GameManager.Instance.levelWinP.SetActive(true);
+        }
     }
 
     public void AttackBonus()

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class GameManager : MonoBehaviour
     public GameObject diedPanel;
     public GameObject settingsPanel;
     public GameObject mainMenuP;
-    public GameObject levelCompSpline;
+    public GameObject levelWinP;
     public GameObject DolarSc;
     public GameObject coinObj;
 
@@ -36,7 +37,7 @@ public class GameManager : MonoBehaviour
 
 
     private static GameManager _instance;
-
+    
     public static GameManager Instance
     {
         get
@@ -46,6 +47,12 @@ public class GameManager : MonoBehaviour
 
             return _instance;
         }
+    }
+
+    private void Start()
+    {
+        isPlay = false;
+        _anim.enabled = false;
     }
 
     public void SwichCase()
@@ -88,7 +95,12 @@ public class GameManager : MonoBehaviour
                 leftHand.SetActive(false);
                 rightHand.SetActive(false);
                 head.SetActive(false);
+                PlayerScript.GetComponent<Rigidbody>().isKinematic = true;
+                _anim.enabled = false;
                 //UI ile birlikte yapılacak 
+                isPlay = false;
+                diedPanel.SetActive(true);
+                //die
                 Debug.Log("ortakısım");
                 break;
             case PlayerState.twoLeg:
@@ -121,12 +133,15 @@ public class GameManager : MonoBehaviour
     public void MainManuPanel()
     {
         mainMenuP.SetActive(false);
-        settingsPanel.SetActive(true);
-        diedPanel.SetActive(false);
+        isPlay = true;
+        _anim.enabled = true;
+        PlayerScript.playerState = PlayerState.None;
+        SwichCase();
     }
 
     public void DiedPanel()
     {
+        SceneManager.LoadScene(0);
         settingsPanel.SetActive(false);
         mainMenuP.SetActive(true);
         diedPanel.SetActive(false);
